@@ -15,11 +15,11 @@ const Bathtub: React.FC<IProps> = ({ onCompleted, onFalseAnswer }) => {
         Why is it recomended that you fill your bathtub and sinks with water
         during fire?
       </Question>
-      <Option onClick={handleFalseAnswer}>A. To sit in and chill</Option>
+      <Option onClick={onCompleted}>A. To sit in and chill</Option>
       <Option onClick={handleFalseAnswer}>
         B. To drink when dehydrated from the heat
       </Option>
-      <Option onClick={onCompleted}>
+      <Option onClick={handleFalseAnswer}>
         C. To put out small spot fires aound the home
       </Option>
     </Content>

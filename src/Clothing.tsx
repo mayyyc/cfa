@@ -23,12 +23,9 @@ const Clothing: React.FC<IProps> = ({ onCompleted, onFalseAnswer }) => {
     <Content>
       <Question>What would you wear when defending your property?</Question>
       <Options>
+        <ClothOption onClick={onCompleted} src="/images/clothing_light.jpg" />
         <ClothOption
           onClick={handleFalseAnswer}
-          src="/images/clothing_light.jpg"
-        />
-        <ClothOption
-          onClick={onCompleted}
           src="/images/clothing_protective.png"
         />
       </Options>

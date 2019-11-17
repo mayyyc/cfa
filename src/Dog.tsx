@@ -17,9 +17,11 @@ const tremblingEffect = keyframes`
   }
 `;
 const EnragedDog = styled.img`
-  height: 100px;
+  width: 300px;
   display: block;
   animation: ${tremblingEffect} 0.1s infinite;
+  position: absolute;
+  top: 30%;
 `;
 
 interface IProps {
@@ -35,11 +37,8 @@ const Dog: React.FC<IProps> = ({ onCompleted }) => {
   };
   return (
     <Content>
-      {error ? (
-        <EnragedDog src="/images/dog_enraged.png" />
-      ) : (
-        <CalmDog src="/images/dog.png" />
-      )}
+      {error && <EnragedDog src="/images/dog_enraged.png" />}
+      <CalmDog src="/images/dog.png" />
       <Question>What would you prepare for this guy during a fire?</Question>
       <Option onClick={handleWrongAnswer}>A. Food and water</Option>
       <Option onClick={handleWrongAnswer}>

@@ -16,7 +16,7 @@ const Container = styled.div`
   text-align: center;
 `;
 const App: React.FC = () => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(3);
   const [name, setName] = useState();
   const [failed, setFailed] = useState(false);
   const handleCompletedName = (name: string) => {
