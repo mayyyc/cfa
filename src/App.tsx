@@ -6,7 +6,15 @@ import Fire from "./Fire";
 import Clothing from "./Clothing";
 import Congrats from "./Congrats";
 import TryAgain from "./TryAgain";
-
+import Home from "./Home";
+import styled from "styled-components";
+const Container = styled.div`
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
 const App: React.FC = () => {
   const [index, setIndex] = useState(0);
   const [name, setName] = useState();
@@ -24,34 +32,34 @@ const App: React.FC = () => {
   const handleFail = () => {
     setFailed(true);
   };
-  switch (index) {
-    case 6:
-      return failed ? (
-        <TryAgain name={name} onCompleted={goHome} />
-      ) : (
-        <Congrats name={name} />
-      );
-    case 5:
-      return <Fire onCompleted={goToNextPage} />;
-    case 4:
-      return <Clothing onCompleted={goToNextPage} onFalseAnswer={handleFail} />;
-    case 3:
-      return <Dog onCompleted={goToNextPage} />;
-    case 2:
-      return <Bathtub onCompleted={goToNextPage} onFalseAnswer={handleFail} />;
-    case 1:
-      return <Name onCompleted={handleCompletedName} />;
-    case 0:
-    default:
-      return (
-        <div className="App">
-          <img src="/images/logo.svg" />
-          <div>CFA - Level I</div>
-          <div>A.K.A. Country Fire Authority</div>
-          <button onClick={goToNextPage}>Start Exam</button>
-        </div>
-      );
-  }
+  const renderPage = () => {
+    switch (index) {
+      case 6:
+        return failed ? (
+          <TryAgain name={name} onCompleted={goHome} />
+        ) : (
+          <Congrats name={name} />
+        );
+      case 5:
+        return <Fire onCompleted={goToNextPage} />;
+      case 4:
+        return (
+          <Clothing onCompleted={goToNextPage} onFalseAnswer={handleFail} />
+        );
+      case 3:
+        return <Dog onCompleted={goToNextPage} />;
+      case 2:
+        return (
+          <Bathtub onCompleted={goToNextPage} onFalseAnswer={handleFail} />
+        );
+      case 1:
+        return <Name onCompleted={handleCompletedName} />;
+      case 0:
+      default:
+        return <Home onCompleted={goToNextPage} />;
+    }
+  };
+  return <Container>{renderPage()}</Container>;
 };
 
 export default App;

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { Question, Content, Option } from "./styles";
 interface IProps {
   onFalseAnswer: () => void;
   onCompleted: () => void;
@@ -9,19 +10,19 @@ const Bathtub: React.FC<IProps> = ({ onCompleted, onFalseAnswer }) => {
     onCompleted();
   };
   return (
-    <div>
-      <label>
+    <Content>
+      <Question>
         Why is it recomended that you fill your bathtub and sinks with water
-        when there's fire?
-      </label>
-      <button onClick={handleFalseAnswer}>To sit in and chill</button>
-      <button onClick={handleFalseAnswer}>
-        To drink when dehydrated from the heat
-      </button>
-      <button onClick={onCompleted}>
-        To put out small spot fires aound the home
-      </button>
-    </div>
+        during fire?
+      </Question>
+      <Option onClick={handleFalseAnswer}>A. To sit in and chill</Option>
+      <Option onClick={handleFalseAnswer}>
+        B. To drink when dehydrated from the heat
+      </Option>
+      <Option onClick={onCompleted}>
+        C. To put out small spot fires aound the home
+      </Option>
+    </Content>
   );
 };
 export default Bathtub;
